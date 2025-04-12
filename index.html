@@ -1,24 +1,57 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Media Kit – Daniel Leeb (PDF.js)</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-  </style>
-</head>
-<body>
-  <iframe src="https://mozilla.github.io/pdf.js/web/viewer.html?file=mediakit.pdf"></iframe>
-</body>
-</html>
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+
+const videos = [
+  { url: "https://youtu.be/2hvahS7fb80" },
+  { url: "https://www.instagram.com/p/C-CS2r3sXmF/" },
+  { url: "https://www.instagram.com/p/C-Ihi7gIDE5/" },
+  { url: "https://youtu.be/CPTjqetRTEs" },
+  { url: "https://youtu.be/KSRr738xuzI" },
+  { url: "https://youtube.com/shorts/4wRpDIrPUgA?feature=share" },
+  { url: "https://youtu.be/OY4EqfuFZ3s" },
+  { url: "https://youtu.be/hI2C5tUh4NI" },
+  { url: "https://youtu.be/VvGuSPDLzbc" },
+  { url: "https://youtube.com/shorts/Xym6E-3SFko?feature=share" }
+];
+
+export default function PortfolioSite() {
+  return (
+    <div className="p-6 max-w-5xl mx-auto space-y-10">
+      <header className="text-center">
+        <h1 className="text-4xl font-bold">Daniel Leeb</h1>
+        <p className="text-lg mt-2">Foto- & Videograf aus Wien</p>
+        <p className="text-sm mt-1">10 Jahre Erfahrung in Fotografie, 5 Jahre als Videograf & Cutter</p>
+      </header>
+
+      <section className="text-center">
+        <p className="text-base max-w-xl mx-auto">
+          Ich bin spezialisiert auf Landschafts-, Tourismus- und Reisecontent für Social Media. 
+          Als Setassistent war ich zudem bei diversen Produktionen tätig.
+        </p>
+        <p className="text-sm mt-4">Kontakt: <a href="mailto:daniel.68.leeb@gmail.com" className="underline">daniel.68.leeb@gmail.com</a> | Tel: 0681 / 102 370 41</p>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Portfolio</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {videos.map((video, i) => (
+            <Card key={i} className="hover:shadow-xl transition-shadow">
+              <CardContent className="p-4 space-y-2">
+                <p className="text-sm font-medium">Video {i + 1}</p>
+                <a href={video.url} target="_blank" rel="noopener noreferrer">
+                  <Button>Zum Video</Button>
+                </a>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <footer className="text-center text-xs text-gray-500 mt-10">
+        <p>&copy; {new Date().getFullYear()} Daniel Leeb – @daniel_leeb auf Instagram</p>
+      </footer>
+    </div>
+  );
+}
